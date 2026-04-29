@@ -207,19 +207,46 @@
   </footer>
 
   <script>
-    function handleSignup(e) {
+    const SUPABASE_URL = "https://YOUR_PROJECT_REF.supabase.co";
+
+    async function handleSignup(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('.lp-submit');
+      const form = e.target;
+      const btn = form.querySelector('.lp-submit');
+      const success = document.getElementById('lp-success');
+
       btn.disabled = true;
       btn.textContent = 'Sender...';
 
-      // TODO: Replace setTimeout with fetch to Google Apps Script
-      setTimeout(() => {
-        document.getElementById('lp-success').style.display = 'block';
-        e.target.reset();
+      const data = {
+        navn: form.navn.value.trim(),
+        epost: form.epost.value.trim(),
+        telefon: form.telefon.value.trim(),
+      };
+
+      try {
+        const res = await fetch(`${SUPABASE_URL}/functions/v1/handle-signup`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        const json = await res.json();
+
+        if (!res.ok) {
+          alert(json.error ?? 'Noe gikk galt. Prøv igjen.');
+          return;
+        }
+
+        success.style.display = 'block';
+        form.reset();
+
+      } catch {
+        alert('Kunne ikke sende skjemaet. Sjekk internettforbindelsen din.');
+      } finally {
         btn.disabled = false;
         btn.textContent = 'Meld deg på nå';
-      }, 600);
+      }
     }
   </script>
 
