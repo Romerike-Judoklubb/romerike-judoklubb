@@ -49,14 +49,6 @@ img { max-width: 100%; }
 
 .logo-icon { color: var(--red); font-size: 0.7rem; }
 
-.home-icon {
-  width: 16px; height: 16px;
-  color: rgba(255,255,255,0.5);
-  flex-shrink: 0;
-  transition: color 0.2s;
-}
-.logo:hover .home-icon { color: var(--white); }
-
 .logo-img { height: 40px; width: 40px; object-fit: contain; border-radius: 50%; }
 
 .nav-links {
