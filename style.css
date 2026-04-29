@@ -462,7 +462,8 @@ footer {
 
 .footer-grasrot {
   display: block;
-  max-width: 320px;
+  max-width: 480px;
+  margin-left: auto;
   border-radius: 6px;
   overflow: hidden;
   transition: opacity 0.2s;
