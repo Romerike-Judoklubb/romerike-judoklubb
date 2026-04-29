@@ -6,9 +6,12 @@ burger.addEventListener('click', () => {
   navLinks.classList.toggle('open');
 });
 
-// Close menu when a link is clicked
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('open'));
+// Close menu when a link is clicked (excluding dropdown toggles)
+navLinks.querySelectorAll('a:not(.dropdown-toggle)').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+  });
 });
 
 // Mobile dropdown toggle
