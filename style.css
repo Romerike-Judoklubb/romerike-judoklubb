@@ -623,6 +623,7 @@ footer {
     padding: 0;
     padding-left: 1rem;
   }
+  .dropdown:hover .dropdown-menu { display: none; }
   .dropdown.open .dropdown-menu { display: block; }
   .dropdown-menu a { font-size: 0.88rem; opacity: 0.85; }
   .dropdown-toggle { text-align: center; width: 100%; }
