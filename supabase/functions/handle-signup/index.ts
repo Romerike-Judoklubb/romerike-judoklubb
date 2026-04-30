@@ -21,7 +21,7 @@ serve(async (req) => {
   try {
     const { navn, epost, telefon } = await req.json();
 
-    if (!navn || !epost || !telefon) {
+    if (!navn || !epost) {
       return new Response(
         JSON.stringify({ error: "Alle felt må fylles ut." }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -35,7 +35,7 @@ serve(async (req) => {
 
     const { error: dbError } = await supabase
       .from("signups")
-      .insert({ navn, epost, telefon });
+      .insert({ navn, epost, telefon: telefon || "" });
 
     if (dbError) {
       if (dbError.code === "23505") {
