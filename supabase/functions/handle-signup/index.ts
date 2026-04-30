@@ -47,37 +47,77 @@ serve(async (req) => {
       throw dbError;
     }
 
-    const resendRes = await fetch("https://api.resend.com/emails", {
+    const resendBase = {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${Deno.env.get("RESEND_API_KEY")}`,
         "Content-Type": "application/json",
       },
+    };
+
+    // Email 1: Confirmation
+    const confirmRes = await fetch("https://api.resend.com/emails", {
+      ...resendBase,
       body: JSON.stringify({
-        from: "Romerike Judoklubb <post@romerikejudoklubb.no>",
+        from: "Romerike Judoklubb <kontakt@romerikejudoklubb.no>",
         to: [epost],
-        subject: "Velkommen til Romerike Judoklubb – prøvetid bekreftet!",
+        subject: "Påmelding mottatt – Romerike Judoklubb",
         html: `
           <p>Hei ${navn},</p>
-          <p>Takk for at du meldte deg på 14 dagers gratis prøvetid!</p>
-          <p>En av trenerne våre tar kontakt med deg på <strong>${telefon}</strong> for å avtale første trening.</p>
-          <p>Du kan også møte opp direkte på en av treningene våre:</p>
-          <ul>
-            <li><strong>Tirsdag:</strong> Barn (7+) 17:30, Ungdom (11+) 18:30, Fokus bakkekamp (16+) 19:30</li>
-            <li><strong>Torsdag:</strong> Barn (7+) 17:30, Ungdom (11+) 18:30, Kast (16+) 19:30</li>
-            <li><strong>Lørdag:</strong> Kamptrening / Egentrening 10:00</li>
-          </ul>
-          <p><strong>Adresse:</strong> Åråsveien 16A, 2007 Kjeller</p>
+          <p>Vi har mottatt din påmelding til 14 dagers gratis prøveperiode!</p>
+          <p>En av oss tar kontakt med deg snart for å avtale din første trening.</p>
+          <p>Har du spørsmål i mellomtiden? Ta gjerne kontakt på
+          <a href="mailto:kontakt@romerikejudoklubb.no">kontakt@romerikejudoklubb.no</a>
+          eller ring oss på <a href="tel:+4792043361">920 43 361</a>
+          (mandag–fredag kl. 12:00–17:00).</p>
           <p>Vi gleder oss til å se deg på matta!</p>
-          <p>– Romerike Judoklubb<br/>
-          📞 +47 920 43 361<br/>
-          ✉️ post@romerikejudoklubb.no</p>
+          <p>– Romerike Judoklubb</p>
         `,
       }),
     });
 
-    if (!resendRes.ok) {
-      console.error("Resend error:", await resendRes.text());
+    if (!confirmRes.ok) {
+      console.error("Confirmation email error:", await confirmRes.text());
+    }
+
+    // Email 2: First class info (placeholder – edit content before going live)
+    const firstClassRes = await fetch("https://api.resend.com/emails", {
+      ...resendBase,
+      body: JSON.stringify({
+        from: "Romerike Judoklubb <kontakt@romerikejudoklubb.no>",
+        to: [epost],
+        subject: "Alt du trenger å vite til din første trening",
+        html: `
+          <p>Hei ${navn},</p>
+
+          <p>[REDIGER: Legg til velkomstmelding fra trenerne her]</p>
+
+          <h2>Praktisk informasjon</h2>
+          <p>[REDIGER: Hva bør de ta med? Hva skal de ha på seg? Hvem skal de spørre etter?]</p>
+
+          <h2>Treningssted</h2>
+          <p>Åråsveien 16A, 2007 Kjeller</p>
+
+          <h2>Timeplan</h2>
+          <ul>
+            <li><strong>Mandag:</strong> Kamptrening 19:00–20:30</li>
+            <li><strong>Tirsdag:</strong> Barn (7+) 17:30–18:30 · Ungdom (11+) 18:30–19:30 · Voksne (16+) 19:30–21:00</li>
+            <li><strong>Onsdag:</strong> Knøttejudo (4+) 17:30–18:15</li>
+            <li><strong>Torsdag:</strong> Barn (7+) 17:30–18:30 · Ungdom (11+) 18:30–19:30 · Voksne (16+) 19:30–21:00</li>
+            <li><strong>Lørdag:</strong> Åpen matte / kamptrening 10:00–12:00</li>
+          </ul>
+
+          <p>[REDIGER: Avslutt med en oppmuntrende setning]</p>
+
+          <p>– Romerike Judoklubb<br/>
+          📞 920 43 361<br/>
+          ✉️ kontakt@romerikejudoklubb.no</p>
+        `,
+      }),
+    });
+
+    if (!firstClassRes.ok) {
+      console.error("First class email error:", await firstClassRes.text());
     }
 
     return new Response(
