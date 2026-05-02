@@ -34,7 +34,7 @@ serve(async (req) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Kontaktskjema <post@romerikejudoklubb.no>",
+        from: "Kontaktskjema <post@send.romerikejudoklubb.no>",
         to: ["kontakt@romerikejudoklubb.no"],
         reply_to: epost,
         subject: `Ny henvendelse fra ${navn}`,
