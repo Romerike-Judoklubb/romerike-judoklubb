@@ -106,7 +106,7 @@ serve(async (req) => {
             <li><strong>Tirsdag:</strong> Barn (7+) 17:30–18:30 · Ungdom (11+) 18:30–19:30 · Voksne (16+) 19:30–21:00</li>
             <li><strong>Onsdag:</strong> Knøttejudo (4+) 17:30–18:15</li>
             <li><strong>Torsdag:</strong> Barn (7+) 17:30–18:30 · Ungdom (11+) 18:30–19:30 · Voksne (16+) 19:30–21:00</li>
-            <li><strong>Lørdag:</strong> Åpen matte / kamptrening 10:00–12:00</li>
+            <li><strong>Lørdag:</strong> Åpen matte 10:00–12:00</li>
           </ul>
 
           <p>[REDIGER: Avslutt med en oppmuntrende setning]</p>
