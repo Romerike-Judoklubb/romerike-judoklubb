@@ -6,6 +6,70 @@
   <title>Hva er judo? – Romerike Judoklubb</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* ── Founder photo gallery ── */
+    .founder-gallery {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      max-width: 860px;
+      margin: 0 auto 12px;
+    }
+
+    .founder-side {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .founder-side img {
+      width: 100%;
+      border-radius: var(--radius);
+      object-fit: cover;
+      aspect-ratio: 4/3;
+      display: block;
+    }
+
+    .founder-center {
+      flex: 0 0 210px;
+      text-align: center;
+      margin: 0;
+    }
+
+    .founder-center img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      object-fit: cover;
+      display: block;
+    }
+
+    .founder-center figcaption {
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--grey);
+    }
+
+    .founder-bottom {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .founder-bottom img {
+      width: calc(50% - 6px);
+      border-radius: var(--radius);
+      object-fit: cover;
+      aspect-ratio: 4/3;
+    }
+
+    @media (max-width: 600px) {
+      .founder-gallery { flex-wrap: wrap; }
+      .founder-center { flex: 0 0 160px; }
+      .founder-bottom img { width: 100%; }
+    }
+
     /* ── Etymology block ── */
     .etymology {
       display: flex;
@@ -227,11 +291,23 @@
       <p style="max-width:680px;margin:0 auto 2.5rem;text-align:center;color:var(--grey);font-size:1.05rem;line-height:1.75">
         Judo ble grunnlagt i Japan i 1882 av <strong>Jigoro Kano</strong>. Han tok de beste elementene fra de gamle jiu-jitsu-stilene og skapte en moderne idrett og disiplin bygget på respekt, selvutvikling og samarbeid. I dag er judo en olympisk idrett som utøves av millioner av mennesker i over 200 land.
       </p>
-      <figure style="text-align:center;margin:0 auto 2.5rem;">
-        <img src="pictures/Portrait_of_late_Mr._Kano.jpg" alt="Jigoro Kano"
-             style="width:220px;border-radius:var(--radius);box-shadow:var(--shadow);object-fit:cover;" />
-        <figcaption style="margin-top:0.6rem;font-size:0.85rem;color:var(--grey);">Jigoro Kano (1860–1938)</figcaption>
-      </figure>
+      <div class="founder-gallery">
+        <div class="founder-side">
+          <img src="pictures/gammel judo.jpg" alt="Historisk judo" />
+          <img src="pictures/katas.jpg" alt="Kata" />
+        </div>
+        <figure class="founder-center">
+          <img src="pictures/Portrait_of_late_Mr._Kano.jpg" alt="Jigoro Kano" />
+          <figcaption>Jigoro Kano (1860–1938)</figcaption>
+        </figure>
+        <div class="founder-side">
+          <img src="pictures/gripfighting.jpg" alt="Gripfighting" />
+          <img src="pictures/woman newaza.jpg" alt="Ne-waza" />
+        </div>
+      </div>
+      <div class="founder-bottom">
+        <img src="pictures/original.jpg" alt="Judo" />
+      </div>
 
 
       <p style="max-width:680px;margin:0 auto 2.5rem;text-align:center;color:var(--grey);line-height:1.75">
@@ -304,28 +380,6 @@
     </div>
   </section>
 
-  <!-- PHOTO GALLERY -->
-  <section class="section" style="padding-top:0">
-    <div class="container-wide">
-      <div class="gallery">
-        <div class="gallery-item gallery-large">
-          <img src="pictures/gammel judo.jpg" alt="Historisk judo" />
-        </div>
-        <div class="gallery-item">
-          <img src="pictures/katas.jpg" alt="Kata" />
-        </div>
-        <div class="gallery-item">
-          <img src="pictures/gripfighting.jpg" alt="Gripfighting" />
-        </div>
-        <div class="gallery-item">
-          <img src="pictures/woman newaza.jpg" alt="Ne-waza" />
-        </div>
-        <div class="gallery-item">
-          <img src="pictures/original.jpg" alt="Judo" />
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- FOUNDER QUOTE -->
   <section class="section section-dark">
