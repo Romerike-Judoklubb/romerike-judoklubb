@@ -444,16 +444,35 @@ footer {
 
 .footer-contact-item a:hover { color: var(--white); }
 
+.footer-logos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
 .footer-grasrot {
   display: block;
   max-width: min(480px, 100%);
-  margin-left: auto;
   border-radius: 6px;
   overflow: hidden;
   transition: opacity 0.2s;
 }
 .footer-grasrot:hover { opacity: 0.85; }
 .footer-grasrot img { width: 100%; display: block; }
+
+.footer-njf-logo {
+  display: block;
+  width: 100px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .footer-logos { flex-direction: column; align-items: flex-start; margin-left: 0; }
+}
 
 .footer-copy {
   font-size: 0.8rem;
