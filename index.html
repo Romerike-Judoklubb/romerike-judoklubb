@@ -263,49 +263,31 @@
         <span class="label">Kontakt</span>
         <h2>Ta kontakt med oss</h2>
       </div>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="contact-item">
-            <div class="contact-icon">✉️</div>
-            <div>
-              <strong>E-post</strong>
-              <a href="mailto:kontakt@romerikejudoklubb.no">kontakt@romerikejudoklubb.no</a>
-            </div>
+      <div class="contact-info">
+        <a href="signup.html" class="btn btn-primary" style="display:inline-block;margin-bottom:2rem">Meld deg på</a>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <strong>E-post</strong>
+            <a href="mailto:kontakt@romerikejudoklubb.no">kontakt@romerikejudoklubb.no</a>
           </div>
-          <div class="contact-item">
-            <div class="contact-icon">📞</div>
-            <div>
-              <strong>Telefon</strong>
-              <a href="tel:+4792043361">920 43 361</a>
-              <p style="margin-top:0.3rem;font-size:0.85rem;">Telefontid: mandag–fredag, kl. 12:00–17:00</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">📍</div>
-            <div>
-              <strong>Adresse</strong>
-              <p>Åråsveien 16A, 2007 Kjeller</p>
-            </div>
-          </div>
-          <img src="pictures/Skjermbilde adresse 2 RJK.png" alt="Kart – Åråsveien 16A, Kjeller" style="width:100%;border-radius:10px;margin-top:0.5rem;display:block;" />
         </div>
-        <form class="contact-form" onsubmit="handleSubmit(event)">
-          <div class="form-group">
-            <label for="navn">Navn</label>
-            <input type="text" id="navn" name="navn" placeholder="Ditt navn" required />
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <strong>Telefon</strong>
+            <a href="tel:+4792043361">920 43 361</a>
+            <p style="margin-top:0.3rem;font-size:0.85rem;">Telefontid: mandag–fredag, kl. 12:00–17:00</p>
           </div>
-          <div class="form-group">
-            <label for="epost">E-post</label>
-            <input type="email" id="epost" name="epost" placeholder="din@epost.no" required />
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <strong>Adresse</strong>
+            <p>Åråsveien 16A, 2007 Kjeller</p>
           </div>
-          <div class="form-group">
-            <label for="melding">Melding</label>
-            <textarea id="melding" name="melding" rows="4" placeholder="Hva lurer du på?" required></textarea>
-          </div>
-          <div class="cf-turnstile" data-sitekey="0x4AAAAAADSeUvG-YMpD87by" style="margin-bottom:0.75rem"></div>
-          <button type="submit" class="btn btn-primary">Send melding</button>
-          <p class="form-success" id="form-success">Takk! Vi svarer deg snart.</p>
-        </form>
+        </div>
+        <img src="pictures/Skjermbilde adresse 2 RJK.png" alt="Kart – Åråsveien 16A, Kjeller" style="width:100%;border-radius:10px;margin-top:0.5rem;display:block;" />
       </div>
     </div>
   </section>
@@ -419,6 +401,5 @@
       document.addEventListener('click', hide);
     })();
   </script>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>
