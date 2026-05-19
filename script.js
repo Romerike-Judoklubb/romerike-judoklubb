@@ -54,10 +54,19 @@ async function handleSubmit(e) {
   btn.disabled = true;
   btn.textContent = 'Sender...';
 
+  const turnstileToken = form.querySelector('[name="cf-turnstile-response"]')?.value;
+  if (!turnstileToken) {
+    alert('Vennligst fullfør sikkerhetskontrollen.');
+    btn.disabled = false;
+    btn.textContent = 'Send melding';
+    return;
+  }
+
   const data = {
     navn: form.navn.value.trim(),
     epost: form.epost.value.trim(),
     melding: form.melding.value.trim(),
+    turnstileToken,
   };
 
   try {

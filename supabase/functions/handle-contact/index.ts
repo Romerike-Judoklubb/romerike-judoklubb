@@ -18,11 +18,34 @@ serve(async (req) => {
   }
 
   try {
-    const { navn, epost, melding } = await req.json();
+    const { navn, epost, melding, turnstileToken } = await req.json();
 
     if (!navn || !epost || !melding) {
       return new Response(
         JSON.stringify({ error: "Alle felt må fylles ut." }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    if (!turnstileToken) {
+      return new Response(
+        JSON.stringify({ error: "Sikkerhetskontrollen mangler." }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const turnstileRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        secret: Deno.env.get("TURNSTILE_SECRET_KEY"),
+        response: turnstileToken,
+      }),
+    });
+    const turnstileData = await turnstileRes.json();
+    if (!turnstileData.success) {
+      return new Response(
+        JSON.stringify({ error: "Sikkerhetskontrollen feilet. Prøv igjen." }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }

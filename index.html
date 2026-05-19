@@ -302,6 +302,7 @@
             <label for="melding">Melding</label>
             <textarea id="melding" name="melding" rows="4" placeholder="Hva lurer du på?" required></textarea>
           </div>
+          <div class="cf-turnstile" data-sitekey="YOUR_SITE_KEY" style="margin-bottom:0.75rem"></div>
           <button type="submit" class="btn btn-primary">Send melding</button>
           <p class="form-success" id="form-success">Takk! Vi svarer deg snart.</p>
         </form>
@@ -418,5 +419,6 @@
       document.addEventListener('click', hide);
     })();
   </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>
