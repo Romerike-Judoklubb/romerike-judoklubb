@@ -7,90 +7,52 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="pictures/logo.webp" type="image/webp">
   <style>
-    /* ── Events ── */
-    .events-table-header {
-      display: grid;
-      grid-template-columns: 1fr 140px 90px;
-      padding: 0 1.5rem 0.6rem;
-      border-bottom: 2px solid var(--light-grey);
-      margin-bottom: 0.75rem;
+    /* ── Events table ── */
+    .events-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
     }
 
-    .events-th {
-      font-size: 0.75rem;
+    .events-table thead th {
+      text-align: left;
+      font-size: 0.8rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       color: var(--grey);
-      text-align: center;
+      padding: 0 1rem 0.75rem;
+      border-bottom: 2px solid var(--light-grey);
     }
 
-    .events-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
+    .events-table .col-date { width: 155px; }
+    .events-table .col-who  { width: 200px; }
+    .events-table .col-link { width: 190px; }
 
-    .event-card {
-      display: grid;
-      grid-template-columns: 1fr 140px 90px;
-      gap: 1rem;
-      align-items: center;
-      background: var(--white);
-      border: 1px solid var(--light-grey);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 1.25rem 1.5rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .event-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    }
-
-    .event-info { min-width: 0; }
-
-    .event-title {
-      font-size: 1.05rem;
-      font-weight: 800;
-      margin-bottom: 0.3rem;
-    }
-
-    .event-col {
-      font-size: 0.88rem;
-      font-weight: 600;
+    .month-row td {
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 1.75rem 1rem 0.5rem;
       color: var(--dark);
-      text-align: center;
     }
+
+    .event-row td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--light-grey);
+      vertical-align: middle;
+    }
+
+    .event-name { font-weight: 600; }
+    .event-name--competition { color: var(--red); }
 
     .event-link {
-      display: inline-block;
-      margin-top: 0.4rem;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--red);
+      color: #1a6ec8;
       text-decoration: none;
+      font-weight: 600;
     }
     .event-link:hover { text-decoration: underline; }
 
-    .event-card--past {
-      opacity: 0.55;
-      position: relative;
-    }
-    .event-card--past::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: #e8192c;
-      pointer-events: none;
-    }
-    .event-card--past:hover {
-      transform: none;
-    }
+    .event-row--past td { opacity: 0.45; text-decoration: line-through; }
 
     /* ── News ── */
     .news-grid {
@@ -99,52 +61,14 @@
       gap: 1.5rem;
     }
 
-    .news-card {
-      background: var(--white);
-      border: 1px solid var(--light-grey);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .news-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    }
-
-    .news-img-placeholder {
-      width: 100%;
-      height: 180px;
-      background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.3); font-size: 0.82rem;
-    }
-
-    .news-body { padding: 1.25rem 1.5rem 1.5rem; }
-
-    .news-date {
-      font-size: 0.78rem;
-      color: var(--grey);
-      margin-bottom: 0.4rem;
-    }
-
-    .news-title {
-      font-size: 1rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-
-    .news-excerpt {
-      font-size: 0.88rem;
-      color: var(--grey);
-      line-height: 1.6;
-    }
-
-    @media (max-width: 600px) {
-      .events-table-header { display: none; }
-      .event-card { grid-template-columns: 1fr; gap: 0.4rem; }
-      .event-col { text-align: left; color: var(--grey); font-size: 0.82rem; font-weight: 600; }
+    @media (max-width: 640px) {
+      .events-table thead { display: none; }
+      .events-table .col-date, .events-table .col-who, .events-table .col-link { width: auto; }
+      .month-row, .event-row { display: block; }
+      .event-row td { display: block; border-bottom: none; padding: 0.2rem 0.5rem; }
+      .event-row td:first-child { font-weight: 700; padding-top: 0.75rem; }
+      .event-row td:last-child { padding-bottom: 0.75rem; border-bottom: 1px solid var(--light-grey); }
+      .month-row td { padding: 1.25rem 0.5rem 0.25rem; }
       .news-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -192,65 +116,63 @@
         <span class="label">Kommende</span>
         <h2>Arrangementer</h2>
       </div>
-      <div class="events-table-header">
-        <div></div>
-        <div class="events-th">For hvem</div>
-        <div class="events-th">Dato</div>
-      </div>
-      <div class="events-list">
+      <table class="events-table">
+        <thead>
+          <tr>
+            <th class="col-date">Når</th>
+            <th class="col-event">Hva</th>
+            <th class="col-who">Hvem</th>
+            <th class="col-link">Informasjon / Påmelding</th>
+          </tr>
+        </thead>
+        <tbody>
 
-<div class="event-card" data-date="2026-05-09">
-          <div class="event-info">
-            <div class="event-title">Treningssamling med Viacheslav Menchakov</div>
-            <a href="https://judonorway.smoothcomp.com/en/event/29719" target="_blank" rel="noopener" class="event-link">Påmelding →</a>
-          </div>
-          <div class="event-col">U13 t.o.m. Senior</div>
-          <div class="event-col">9. mai</div>
-        </div>
+          <tr class="month-row"><td colspan="4">Mai</td></tr>
 
-        <div class="event-card" data-date="2026-05-21">
-          <div class="event-info">
-            <div class="event-title">Gradering barn og ungdom</div>
-          </div>
-          <div class="event-col">Barne- og ungdomspartiet</div>
-          <div class="event-col">21. mai</div>
-        </div>
+          <tr class="event-row" data-date="2026-05-09">
+            <td>09.05.2026</td>
+            <td class="event-name">Treningssamling med Viacheslav Menchakov</td>
+            <td>U13 t.o.m. Senior</td>
+            <td><a href="https://judonorway.smoothcomp.com/en/event/29719" target="_blank" rel="noopener" class="event-link">Påmelding</a></td>
+          </tr>
 
-        <div class="event-card" data-date="2026-05-26">
-          <div class="event-info">
-            <div class="event-title">Sommeravslutning</div>
-          </div>
-          <div class="event-col">Alle</div>
-          <div class="event-col">26. mai</div>
-        </div>
+          <tr class="event-row" data-date="2026-05-21">
+            <td>21.05.2026</td>
+            <td class="event-name">Gradering barn og ungdom</td>
+            <td>Barne- og ungdomspartiet</td>
+            <td></td>
+          </tr>
 
-        <div class="event-card" data-date="2026-05-28">
-          <div class="event-info">
-            <div class="event-title">Trenerbesøk: John Hansen</div>
-          </div>
-          <div class="event-col">Voksenpartiet</div>
-          <div class="event-col">28. mai</div>
-        </div>
+          <tr class="event-row" data-date="2026-05-26">
+            <td>26.05.2026</td>
+            <td class="event-name">Sommeravslutning</td>
+            <td>Alle</td>
+            <td></td>
+          </tr>
 
-        <div class="event-card" data-date="2026-05-30">
-          <div class="event-info">
-            <div class="event-title">Jubapool 2</div>
-            <a href="https://judonorway.smoothcomp.com/no/event/26643" target="_blank" rel="noopener" class="event-link">Påmelding →</a>
-          </div>
-          <div class="event-col">U9, U11 og U13</div>
-          <div class="event-col">30. mai</div>
-        </div>
+          <tr class="event-row" data-date="2026-05-28">
+            <td>28.05.2026</td>
+            <td class="event-name">Trenerbesøk: John Hansen</td>
+            <td>Voksenpartiet</td>
+            <td></td>
+          </tr>
 
-        <div class="event-card" data-date="2026-05-31">
-          <div class="event-info">
-            <div class="event-title">Ekstraordinært Årsmøte (ONLINE)</div>
-            <a href="https://docs.google.com/document/d/1p9EEfQZkYvJAq0bn9fXCmK1Z5leHBpj_ZvdBt1GsH9A/edit?tab=t.0" target="_blank" rel="noopener" class="event-link">Innkalling →</a>
-          </div>
-          <div class="event-col">Alle medlemmer</div>
-          <div class="event-col">31. mai</div>
-        </div>
+          <tr class="event-row" data-date="2026-05-30">
+            <td>30.05.2026</td>
+            <td class="event-name event-name--competition">Jubapool 2</td>
+            <td>U9, U11 og U13</td>
+            <td><a href="https://judonorway.smoothcomp.com/no/event/26643" target="_blank" rel="noopener" class="event-link">Påmelding</a></td>
+          </tr>
 
-      </div>
+          <tr class="event-row" data-date="2026-05-31">
+            <td>31.05.2026</td>
+            <td class="event-name">Ekstraordinært Årsmøte (ONLINE)</td>
+            <td>Alle medlemmer</td>
+            <td><a href="https://docs.google.com/document/d/1p9EEfQZkYvJAq0bn9fXCmK1Z5leHBpj_ZvdBt1GsH9A/edit?tab=t.0" target="_blank" rel="noopener" class="event-link">Innkalling</a></td>
+          </tr>
+
+        </tbody>
+      </table>
     </div>
   </section>
 
@@ -310,20 +232,20 @@
   <script src="script.js"></script>
   <script>
     (function () {
-      const list = document.querySelector('.events-list');
-      if (!list) return;
+      const tbody = document.querySelector('.events-table tbody');
+      if (!tbody) return;
       const today = new Date();
       today.setHours(0, 0, 0, 0);
       const ninetyDaysAgo = new Date(today);
       ninetyDaysAgo.setDate(today.getDate() - 90);
 
-      list.querySelectorAll('.event-card[data-date]').forEach(card => {
-        const d = new Date(card.dataset.date);
+      tbody.querySelectorAll('tr.event-row[data-date]').forEach(row => {
+        const d = new Date(row.dataset.date);
         if (d < ninetyDaysAgo) {
-          card.remove();
+          row.remove();
         } else if (d < today) {
-          card.classList.add('event-card--past');
-          list.appendChild(card);
+          row.classList.add('event-row--past');
+          tbody.appendChild(row);
         }
       });
     })();
