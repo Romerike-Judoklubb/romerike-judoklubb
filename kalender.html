@@ -243,12 +243,23 @@
       const ninetyDaysAgo = new Date(today);
       ninetyDaysAgo.setDate(today.getDate() - 90);
 
+      const monthNames = ['Januar','Februar','Mars','April','Mai','Juni','Juli','August','September','Oktober','November','Desember'];
+      let lastMonth = null;
+
       tbody.querySelectorAll('tr.event-row[data-date]').forEach(row => {
         const d = new Date(row.dataset.date);
         if (d < ninetyDaysAgo) {
           row.remove();
         } else if (d < today) {
           row.classList.add('event-row--past');
+          const month = d.getMonth();
+          if (month !== lastMonth) {
+            const monthRow = document.createElement('tr');
+            monthRow.className = 'month-row';
+            monthRow.innerHTML = `<td colspan="4">${monthNames[month]}</td>`;
+            pastTbody.appendChild(monthRow);
+            lastMonth = month;
+          }
           pastTbody.appendChild(row);
           pastSection.style.display = '';
         }
