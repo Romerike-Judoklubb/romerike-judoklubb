@@ -172,6 +172,24 @@
     </div>
   </section>
 
+  <!-- PAST EVENTS -->
+  <section class="section" id="tidligere" style="display:none;padding-top:0">
+    <div class="container">
+      <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:1.25rem;color:var(--dark)">Tidligere i år</h2>
+      <table class="events-table" id="past-events-table">
+        <thead>
+          <tr>
+            <th class="col-date">Når</th>
+            <th class="col-event">Hva</th>
+            <th class="col-who">Hvem</th>
+            <th class="col-link">Informasjon / Påmelding</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="container footer-inner">
@@ -216,6 +234,8 @@
   <script>
     (function () {
       const tbody = document.querySelector('.events-table tbody');
+      const pastSection = document.getElementById('tidligere');
+      const pastTbody = document.querySelector('#past-events-table tbody');
       if (!tbody) return;
       const today = new Date();
       today.setHours(0, 0, 0, 0);
@@ -228,7 +248,8 @@
           row.remove();
         } else if (d < today) {
           row.classList.add('event-row--past');
-          tbody.appendChild(row);
+          pastTbody.appendChild(row);
+          pastSection.style.display = '';
         }
       });
     })();
