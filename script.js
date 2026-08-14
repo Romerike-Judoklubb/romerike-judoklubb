@@ -41,3 +41,23 @@ document.querySelectorAll(
   el.classList.add('fade-in');
   observer.observe(el);
 });
+
+// Lightbox: click any image with class "lightbox-img" to view it enlarged
+document.querySelectorAll('.lightbox-img').forEach(img => {
+  img.addEventListener('click', () => {
+    const overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    const big = document.createElement('img');
+    big.src = img.src;
+    big.alt = img.alt;
+    overlay.appendChild(big);
+    overlay.addEventListener('click', () => overlay.remove());
+    document.addEventListener('keydown', function escClose(e) {
+      if (e.key === 'Escape') {
+        overlay.remove();
+        document.removeEventListener('keydown', escClose);
+      }
+    });
+    document.body.appendChild(overlay);
+  });
+});

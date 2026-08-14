@@ -6,6 +6,27 @@
   <title>Våre lokaler – Romerike Judoklubb</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="pictures/logo.webp" type="image/webp">
+  <style>
+    .lokaler-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .lokaler-photo {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      cursor: zoom-in;
+      transition: opacity 0.2s;
+    }
+
+    .lokaler-photo:hover {
+      opacity: 0.92;
+    }
+  </style>
 </head>
 <body>
 
@@ -45,24 +66,14 @@
   <!-- LOKALER -->
   <section class="section">
     <div class="container">
-      <p style="text-align:center; font-size:1.2rem; max-width:640px; margin:0 auto 2rem;">Vi holder til i moderne og romslige lokaler på Kjeller, med god plass til trening på matta og et koselig fellesrom for pauser mellom øktene.</p>
+      <p style="text-align:center; font-size:1.2rem; max-width:640px; margin:0 auto 2rem;">Vi holder til i moderne og romslige lokaler på Kjeller, med god plass til trening på matta og et koselig fellesområde for pauser og sosialt samvær mellom øktene. Vi har også et treningshjørne med masse forskjellig utstyr for styrketrening.</p>
 
-      <div class="gallery">
-        <div class="gallery-item gallery-large">
-          <img src="pictures/lokaler-matte-oversikt.jpg" alt="Oversikt over dojoen og treningsmatta" />
-        </div>
-        <div class="gallery-item">
-          <img src="pictures/lokaler-fellesrom.jpg" alt="Fellesrom med sofakrok" />
-        </div>
-        <div class="gallery-item">
-          <img src="pictures/lokaler-matte-og-fellesrom.jpg" alt="Dojoen sett fra matta, med fellesrom i bakgrunnen" />
-        </div>
-        <div class="gallery-item">
-          <img src="pictures/lokaler-matte-hjorne.jpg" alt="Treningsmatte og fallmatter" />
-        </div>
-        <div class="gallery-item">
-          <img src="pictures/lokaler-trening-utstyr.jpg" alt="Treningsutstyr i lokalet" />
-        </div>
+      <div class="lokaler-gallery">
+        <img class="lokaler-photo lightbox-img" src="pictures/lokaler-matte-oversikt.jpg" alt="Oversikt over dojoen og treningsmatta" />
+        <img class="lokaler-photo lightbox-img" src="pictures/lokaler-fellesrom.jpg" alt="Fellesrom med sofakrok" />
+        <img class="lokaler-photo lightbox-img" src="pictures/lokaler-matte-og-fellesrom.jpg" alt="Dojoen sett fra matta, med fellesrom i bakgrunnen" />
+        <img class="lokaler-photo lightbox-img" src="pictures/lokaler-matte-hjorne.jpg" alt="Treningsmatte og fallmatter" />
+        <img class="lokaler-photo lightbox-img" src="pictures/lokaler-trening-utstyr.jpg" alt="Treningsutstyr i lokalet" />
       </div>
     </div>
   </section>
