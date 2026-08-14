@@ -563,6 +563,10 @@ footer {
   object-position: center 80%;
 }
 
+.gallery-item img[src*="Mobilitetssirkel"] {
+  object-position: center 40%;
+}
+
 .gallery-tall {
   grid-row: span 2;
 }
