@@ -666,3 +666,97 @@ footer {
   border-radius: 8px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
+
+/* ===== PRISER (info-til-nybegynnere.html) ===== */
+.price-intro {
+  max-width: 640px; margin: 1.1rem auto 0; text-align: center;
+  color: var(--grey); font-size: 0.95rem;
+}
+
+.price-highlight {
+  max-width: 480px; margin: 2rem auto 0;
+  background: var(--off-white); border: 1px solid var(--light-grey);
+  border-radius: var(--radius); padding: 1.25rem 1.5rem;
+  text-align: center;
+}
+.price-highlight-label {
+  display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--grey); margin-bottom: 0.4rem;
+}
+.price-highlight-amount {
+  display: block; font-size: 1.8rem; font-weight: 800; color: var(--dark);
+}
+.price-highlight-note {
+  display: block; font-size: 0.85rem; color: var(--grey); margin-top: 0.35rem;
+}
+
+.price-group-heading {
+  text-align: center; font-size: 1.05rem; font-weight: 800; color: var(--dark);
+  margin: 2.5rem auto 0;
+}
+.price-group-heading span {
+  font-weight: 500; font-size: 0.85rem; color: var(--grey);
+}
+
+.price-cards {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 1.25rem; max-width: 800px; margin: 1rem auto 0;
+}
+.price-card {
+  background: var(--white); border: 1px solid var(--light-grey); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 1.5rem 1.25rem; text-align: center;
+}
+.price-card-name { font-size: 1.05rem; font-weight: 800; }
+.price-card-age {
+  display: inline-block; background: #f3f3f3; color: var(--grey);
+  font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.7rem; border-radius: 20px;
+  margin: 0.5rem 0 1rem; letter-spacing: 0.05em; text-transform: uppercase;
+}
+.price-card-amount { font-size: 1.5rem; font-weight: 800; color: var(--red); }
+.price-card-period { font-size: 0.82rem; color: var(--grey); margin-top: 0.2rem; }
+
+.price-callout {
+  max-width: 640px; margin: 1.5rem auto 0; text-align: left;
+  background: var(--off-white); border-left: 4px solid var(--red);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1rem 1.25rem; font-size: 0.92rem; color: var(--dark);
+}
+.price-callout-alt { border-left-color: #888; }
+.price-callout strong { display: block; margin-bottom: 0.25rem; }
+
+.price-examples {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 1.25rem; max-width: 700px; margin: 2rem auto 0;
+}
+.price-example {
+  background: var(--off-white); border: 1px solid var(--light-grey); border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+.price-example-title { font-weight: 800; margin-bottom: 0.75rem; }
+.price-example-line {
+  display: flex; justify-content: space-between; gap: 1rem; font-size: 0.9rem;
+  color: var(--grey); padding: 0.2rem 0;
+}
+.price-example-total {
+  display: flex; justify-content: space-between; gap: 1rem; font-size: 0.95rem;
+  font-weight: 800; color: var(--dark);
+  border-top: 1px solid var(--light-grey); margin-top: 0.6rem; padding-top: 0.6rem;
+}
+.price-example-total span:last-child { white-space: nowrap; }
+
+.price-example-group-label {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--grey); margin: 0.2rem 0 0.35rem;
+}
+.price-example-subtotal {
+  display: flex; justify-content: space-between; gap: 1rem; font-size: 0.88rem;
+  font-weight: 700; color: var(--dark);
+  padding-bottom: 0.5rem; margin-bottom: 0.6rem;
+  border-bottom: 1px dashed var(--light-grey);
+}
+.price-example-subtotal span:last-child { white-space: nowrap; }
+
+.price-note {
+  max-width: 640px; margin: 1.1rem auto 0; text-align: center;
+  font-size: 0.88rem; color: var(--grey);
+}
