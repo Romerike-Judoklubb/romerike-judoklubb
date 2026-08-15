@@ -738,8 +738,8 @@ footer {
 .price-callout strong { display: block; margin-bottom: 0.25rem; }
 
 .price-examples {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-  gap: 1.25rem; max-width: 700px; margin: 2rem auto 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 1.25rem; max-width: 980px; margin: 2rem auto 0;
 }
 .price-example {
   background: var(--off-white); border: 1px solid var(--light-grey); border-radius: var(--radius);
