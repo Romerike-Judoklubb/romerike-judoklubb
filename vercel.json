@@ -2,7 +2,8 @@
   "redirects": [
     { "source": "/klubbinfo", "destination": "/index.html", "permanent": true },
     { "source": "/hva-er-judo", "destination": "/hva-er-judo.html", "permanent": true },
-    { "source": "/signup", "destination": "/signup.html", "permanent": true },
+    { "source": "/signup", "destination": "/info-til-nybegynnere.html", "permanent": true },
+    { "source": "/signup.html", "destination": "/info-til-nybegynnere.html", "permanent": true },
     { "source": "/team", "destination": "/team.html", "permanent": true },
     { "source": "/info-til-nybegynnere", "destination": "/info-til-nybegynnere.html", "permanent": true },
     { "source": "/kurs", "destination": "/kurs.html", "permanent": true },
